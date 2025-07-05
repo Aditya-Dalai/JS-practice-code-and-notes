@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Quantity</title>
+</head>
+<body>
+    <button onclick="
+        console.log(`Cart Quantity: ${cartQuantity}`);  //  Tilde (`) symbol is used instead of apostrophe while inserting value in a string.
+    ">Show Quantity</button>
+
+    <button onclick="
+        cartQuantity ++;
+        console.log(`Cart Quantity: ${cartQuantity}`);   
+    ">Add to Cart</button>
+
+    <button onclick="
+        cartQuantity += 2;
+        console.log(`Cart Quantity: ${cartQuantity}`);
+    ">+2</button>
+
+    <button onclick="
+        cartQuantity += 3;
+        console.log(`Cart Quantity: ${cartQuantity}`);
+    ">+3</button>
+
+    <button onclick="
+        cartQuantity = 0;
+        console.log('Cart was reset.');
+        console.log(`Cart Quantity: ${cartQuantity}`);
+    ">Reset Cart</button>
+
+
+
+    <script>
+        let cartQuantity = 0; 
+        /*
+            Naming convention:
+            camelCase - capitalize every word except the first word.
+            (camelCase is the standard for JavaScript.)
+
+            PascalCase - capitalize first letter of each word.
+            There is only feature where PascalCase is used.
+
+            kebab-case - words are in lowercase and combined using a dash (-).
+            (Dosen't work in JS as dash is treated as minus symbol)
+            (Used in HTML and CSS)
+
+            snake_case - words are in lowercase and combined using a underscore (_).
+            (Not used in JS)
+        */
+    </script>
+</body>
+</html>

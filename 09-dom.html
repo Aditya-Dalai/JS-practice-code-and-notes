@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <button>hello</button>
+    <button class="js-button">Second button</button>
+
+    <script>
+        /*
+            DOM = Document Object Model
+             - Built-in Object
+             - called 'document object'
+
+            The document object represents/models the webpage.
+
+            Syntax:
+            document.propertyName = ;
+            document.methodName = ;
+
+            We can have HTML elements inside JS.
+
+            Every HTML element has a property .innerHTML which let's us control any html element from JS.
+
+            HTML elements are JavaScript Objects.
+
+            DOM combines HTML and JS together.
+        */
+
+        document.title = 'Good job!';  //Changes the title from 'DOM' to 'Good job!'
+        
+        document.body;  //Symbolizes the body element
+        console.log( typeof document.body);  //object
+
+        document.body.innerHTML = 'hello';  
+        //removes everything from the page and show the text 'hello'.
+        //body is also an object inside document object which is being accesed by dot notation
+        //innerHTML is a property inside body object.
+        console.log(document.body.innerHTML);  //show all HTML code
+        document.body.innerHTML = '<button>Good Job!</button>';  //Replace all html code to a button named good job.
+        
+
+
+
+
+
+
+
+
+
+        /*
+            document.querySelector()
+            - Let's us get any element from the page and put it inside JavaScript.
+        */
+
+        document.querySelector('button');  //Gets the 1st button element from the page.
+        console.log(document.querySelector('button').innerHTML);  //Good Job!
+        document.querySelector('button').innerHTML = 'Changed';  //Good Job! button will change into 'Changed' button.
+
+        //If we want to access the 2nd button then we have to use 'class' attribute.
+        //use dot notation before writing the class name. It is called 'class selector'.
+        document.querySelector('.js-button');
+        const buttonElement = document.querySelector('.js-button');  //can be saved inside a variable.
+         
+
+
+
+        
+
+        /*
+            In this lesson:
+            1. Document Object Model (DOM)
+            2. document.querySelector(...)
+            3. .innerHTML
+            4. 3 projects using DOM
+            5. onkeydown="..."
+            6. More details about strings + window object
+        */
+
+    </script>
+</body>
+</html>

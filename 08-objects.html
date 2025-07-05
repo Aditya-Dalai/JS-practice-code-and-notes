@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+
+        
+        /*
+            What is an object?
+            An object groups multiple values together.
+
+            Syntax -
+            const objectName = {
+                propertyName1: value1, ->property-value pair
+                propertyName2: value2
+            };
+
+            Many property-value pairs can be included in a object separated by commas.
+
+            Inside an object we can save any type of value. Object themselves are also values.
+        */
+
+        /*
+            In this lesson:
+
+            1. Objects = group related values together
+            2. Added a score to Rock Paper Scissors
+            3. Built-in objects (JSON, localStorage)
+            4. More details (null, auto-boxing, references)
+            5. Shortcuts (destructuring, shorthand property, shorthand method)
+        */
+
+
+       const product = {
+        name: 'socks',
+        price: 1090
+       };
+       console.log(product);
+       console.log(product.name); //accessing a single property by dot notation.
+       console.log(product.price);
+
+       product.name = 'cotton socks'; //changing value of a property.
+       console.log(product.name);
+
+       product.newProperty = true; //adding new property to the object.
+       console.log(product);
+
+       delete product.newProperty; //deleting a property.
+       console.log(product);
+
+       console.log(typeof product); //object
+
+       /*
+            Why use objects?
+            - make our code more organized.
+            - let us group and use multiple values together.
+       */
+
+
+
+
+
+
+
+
+
+       const product2 = {
+        name: 'shirt',
+
+        ['delivery-time']: '1 day' /*if we only have a string (like in this case) between the brackets then the brackets are optional.*/,
+
+        /*Nested object*/
+        rating: {
+            stars: 4.5,
+            count: 87
+        },
+
+        /*Function inside object = METHOD*/
+        fun: function function1() {
+            console.log('function inside object');
+        }
+       };
+
+       /*
+            Bracket Notation
+            - lets us use properties that don't work with dot notation.
+                ex - console.log(propertyName.value-name);
+                JavaScript will think the dash '-' is a minus sign and will try to do math.
+       */
+       console.log(product2['name']); //accessing a single property by bracket notation.
+       console.log(product2['delivery-time']);
+
+       /*
+            Which one to use? (dot or bracket notation)
+            - Use dot notation by default
+            - for properties that don't work, use bracket notation.
+       */
+
+       console.log(product2.rating.count); // accessing a nested object.
+
+       product2.fun(); // accessing a function inside object. 
+       /*
+            Examples of methods (Object + Function = Method)
+
+            - console.log()
+            log is function that is saved inside the console object.
+
+            - Math.random()
+
+            These are called Built-in Objects
+       */
+
+
+
+
+
+
+
+
+
+       /*JSON Built-in Object*/
+
+       /*
+            Java Script Object Notation
+                - a syntax
+                - simmilar to javascript object
+                - but has less features
+
+            Difference between normal JS Object and JSON
+                - all properties and strings must use double quotes
+                  JSON does not support single quotes.
+                - JSON does not support functions.
+
+            Why use a JSON Syntax over a JS Object?
+                JS Object only makes sense in JS. Whereas,
+                Json can be unnderstood by almost every programming language.
+            JSON is more UNIVERSAL.
+
+            We use JSON
+                - when we send data between computers.
+                - when we store data.
+            
+            Built-in JSON Object
+                Convert:
+                JavaScript Object -> JSON
+       */
+
+       //Lets convert product2 object to JSON
+       console.log(JSON.stringify(product2)); //string type output
+
+       //JSON -> JavaScript Object
+       const jsonString = JSON.stringify(product2);
+       console.log(JSON.parse(jsonString));
+
+
+
+
+
+
+
+
+
+       /*localstorage Built-in Object*/
+
+       /*
+            localstorage
+                - save values more permanently
+                    unlike variables, who are temporary and gets deleted if we refresh/close the page.
+                - only support strings.
+
+            To save in localStorage - localStorage.setItem('name', string_value_that_we_want_to_store_in_localStorage*);
+
+            To get value from localStorage - localStorage.getItem('name');
+
+            To remove value from localStorage - localStorage.removeItem('name');
+
+            *If the item to be stored is not already in string format then we have to convert it into string [ex- using JSON.stringify() method]. And convertit back into its original type while using localStorage.getItem() method.
+
+            For usage example check 08-rock-paper-scissors.html file.
+       */
+
+
+
+
+
+
+
+
+
+
+       // Auto-Boxing
+
+       /*
+            JavaScript automatically wraps the value into a special object first, so this value (before string/number/etc, now an object) has all the properties like an object.
+
+            Auto-Boxing does not work with null or undefined.
+       */
+       console.log('hello'.length);  //5
+       console.log('hello'.toUpperCase); //HELLO
+
+
+
+
+
+
+
+
+
+
+       // Objects are actually references
+
+       const object1 = {
+        message: 'hello'
+       };
+       // When we create this object1 the actual value is created somewhere in the computer's memory.
+       // The variable object1 just gets a reference that points to that location in the computer's memory.
+
+       // The reason this works this way is to make the language more efficient. For example:
+       const object2 = object1; //this only makes a copy of the reference that points to the object.
+       // if we had a really big object, its not good to copy the object over and over again.
+       //This is called COPY BY REFERENCE
+
+       object1.message = 'Good job!';
+       console.log(object1);
+       // We r able to change the message property eventhough we created object1 with const.
+       // const prevents us from changing the reference in the variable but it does not prevent us from reaching into the reference and changing the object that its pointing to.
+
+
+
+
+
+
+
+
+
+       const object3 = {
+        message: 'Good job!'
+       };
+
+       console.log(object3 === object1); //false
+       // It'll show that both are not equal eventhough they have the same values inside.
+       // Because, 'objects3' contains the reference.
+       // object3 === object1 -> Here, references are compared, not the values inside.
+
+       console.log(object2 === object1); //true
+
+
+
+
+
+
+
+
+
+       /* Shortcuts for objects */
+
+
+       // If Variable name same as property name:
+       const object4 = {
+        message: 'Good job!',
+        price: 799
+       };
+       // const message = object4.message; instead of this we write,
+       const { message, price } = object4; // This is called destructuring.
+       console.log(message); //Good job!
+       console.log(price); //799
+
+
+       // Shorthand property
+       const object5 = {
+        // message: message instead of this we just write,
+        message
+       };
+       console.log(object5); //{message: 'Good job!'}
+
+
+       // Shorthand method
+       const object6 = {
+        // method: function function1() {
+        //     console.log('method');
+        // } 
+        // Instead of these we write,
+        method() {
+            console.log('method');
+        }
+       };
+       object6.method();
+
+    </script>
+</body>
+</html>

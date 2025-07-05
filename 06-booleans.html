@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booleans</title>
+</head>
+<body>
+    <script>
+        console.log(3 > 5); //false
+
+        console.log(5 == '5.00'); //true
+        // double equals '==' converts both value into same type, i.e, converts both into 5 and then compares it. Eventhough one of them is a string, it still returns 'true'.
+
+        console.log(5 === '5.00'); //false
+        // triple equals '===' compares both the operands as it is.
+        // In JavaScript triple equals is used for comparison.
+        // this rule also applies to not equal to. Instead of '!=' in JavaScript '!==' is used.
+        // Other comparison operators (>, <, >=, <=) are used as it is as in other languages.
+
+        /*
+            Order of Operation:
+                1. (...)
+                2. * /
+                3. + -
+                4. Comparsion operators
+                5. Logical operators
+        */
+
+        console.log(3 > 5 - 5); //true
+
+
+        if (false) {
+            console.log('hello');
+        } else {
+            console.log('else');
+        }
+
+        // legal age example:
+        const age = 15;
+        if (age >= 18) {
+            console.log('You can drive');
+            console.log('Congrats');
+        } else if (age >= 14) {
+            console.log('Almost there!');
+        } else {
+            console.log("You can't drive");
+        }
+
+        //LOGICAL OPERATORS
+        //and operator
+        console.log(true && true); //true
+        console.log(true && false); //false
+
+        //or operator
+        console.log(true || false); //true
+        
+        //not operator
+        console.log(!true); //false
+
+
+
+
+
+
+
+        //Truthy and Falsy values
+        if (5) {
+            console.log('truthy');
+        }
+        /*
+            Falsy Values:
+            1. false
+            2. 0
+            3. ''
+            4. NaN
+            5. undefined
+            6. null
+
+            Truthy Values:
+            Any value not on the above list is truthy.
+
+            Why use truthy and falsy values?
+            One way we use them is like a shortcut in our code. 
+        */
+       //example:
+       const cartQuantity = 5;
+       if (cartQuantity) //no need to write 'cartQuantity > 0'.
+       {
+        console.log('cart has products');
+       }
+
+       console.log('text' / 5); //NaN (Not a Number) - we get NaN when we do some invalid math.
+       console.log(variable1); //undefined
+
+
+
+
+       
+
+       /*
+            Shortcuts for If-Statements :-
+            - Ternary Operator ? :
+            - Guard Operator &&
+            - Default Operator ||
+       */
+       const result = 0 ? 'truthy' : 'falsy'; //ternary operator can be saved in a variable.
+       console.log(result); //falsy
+
+       false && console.log('hello'); //dosen't run the right side operand
+       /*
+            Special feature of && operator:
+            Let we have value1 && value2, and we know for sure that value1 is false, i.e, its impossible for both sides to be truthy.
+            So, we don't even need to check the right side.
+            So, and operator STOPS EARLY and DOSEN'T NEED TO RUN THE CODE ON RIGHT.
+            This is called a SHORT-CIRCUIT EVALUATION.
+       */
+       const message = false && 'hello'; //Guard operator can be saved in a variable.
+       console.log(message);
+       const message2 = 5 && 'hello'; //Now it will not stop early (as the left side operand is a truthy value) and it'll give us the second value as result.
+
+       const currency = 'EUR' || 'USD'; //left side is truthy so it'll stop early and result will be the left operand.
+       const currency2 = undefined || 'USD'; //OR operator dosen't short circuit and the result is right side.
+    </script>
+</body>
+</html>
