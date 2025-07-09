@@ -10,7 +10,7 @@
 
         /*
             Arrays :
-            - another type of value
+            - another type of values
             - represents a list of values
         
         */
@@ -21,8 +21,32 @@
         const myArray = [10, 20, 30];
         console.log(myArray); // [10, 20, 30]
 
-        
+        console.log(myArray[1]); //20
 
+        myArray[0] = 99; //changing value at index 0
+        console.log(myArray); // [99, 20, 30]
+
+        [1, 'hello', true, {name: 'socks'}, [1, 2]]; //Can store different type of values
+
+        console.log(typeof [1, 2]); //object
+        // An array is an object (it's a special type of object)
+
+        Array.isArray([1, 2]); // This would check if this value is an array.
+        console.log(Array.isArray([1, 2])); //true
+
+
+
+        //Arrays being a type of object, do have properties and methods.
+        console.log(myArray.length); //3
+
+        myArray.push(100); //adds 100 at the end of array
+        console.log(myArray); // [99, 20, 30, 100]
+
+        myArray.splice(0, 1); // .splice() removes a value from an array
+        // it takes two numbers (.splice(number1, number2))
+        // 1. Index we want to remove
+        // 2. Number of values to remove
+        console.log(myArray); // [20, 30, 100]
     </script>
 </body>
 </html>
