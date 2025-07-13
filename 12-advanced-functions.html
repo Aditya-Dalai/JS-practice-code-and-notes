@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Functions</title>
+</head>
+<body>
+    <script>
+        //normal function:
+        function greeting() {
+            console.log('hello');
+        }
+        greeting(); //hello
+
+
+
+
+        //ADVANCED FUNCTIONS:
+        /*
+            Functions are also values
+            - we can save a function inside a variable.
+        */
+        const function1 = function greeting() {
+            console.log('hello2');
+        }; //syntax example
+        console.log(function1);
+        /*
+            output : ƒ greeting() {
+                        console.log('hello2');
+                    }
+        */
+        console.log(typeof function1); //function
+        function1(); //hello2
+        /*
+            Anonymous Function:
+            const function1 = function() {
+                console.log('hello2');
+            };
+
+            Function without a name.
+        */
+        /*
+            Intresting fact:
+            Function syntaxs (example: line 10-13) that we have been using this entire course is actually a shortcut of this code:
+            var greeting = function() {
+                console.log('hello');
+            };
+
+            Advantages of that shortcut version we have been using so far:
+            1. Easier to read
+            2. Hoisting (we can call a function before we create it in the code i.e we no need to worry in which order we write in the code)
+
+        */
+
+
+
+
+        //Function inside objects
+        const object1 = {
+            num: 2,
+            // fun: function greeting() {
+            //     console.log('hello3');
+            // }
+            //as long as there is a way to access this function, we no need of a name (i.e greeting), so:
+            fun: function () {
+                console.log('hello3');
+            }            
+        };
+        //to acces the function:
+        object1.fun(); //hello3
+        /*
+            This is called a METHOD.
+            (function saved inside an object)
+        */
+
+
+
+
+
+        //PASS VALUE INTO A FUNCTION
+        function display(param) {
+            console.log(param);
+        }
+        display(2); //2
+
+
+
+
+        //PASS FUNCTION INTO A FUNCTION
+        function run(param) {
+            param();
+        }
+        run(function() {
+            console.log('hello4');
+        }); //hello4
+        //Function passing in is called CALLBACK
+
+
+
+
+
+        // PRATICAL EXAMPLES (using functions as values)
+        /*
+            setTimeout()
+            - allows us to run a function in the future
+            - its a built-in function
+            - take two parameters:
+                1. Function to be ran in future
+                2. How long to wait before running this function (a number in milliseconds)
+                (1000 milliseconds = 1 second)
+        */
+        setTimeout(function() {
+            console.log('timeout');
+        }, 3000); //after 3 seconds it will display 'timeout' in the console
+        // it'll start the timer and goes to next line of code.
+        // ASYNCHRONOUS CODE
+        console.log('next line');
+        //this will display 1st then 'timeout'
+        /*
+            ASYNCHRONOUS CODE:
+            - won't wait for a line to finish before going to the next line
+
+            SYNCHRONOUS CODE:
+            - will wait for one line to finish before going to the next line
+
+            All the code we have written in this course so far is synchronous code.
+            In addition, all the code from line 113-115 is also synchronous code except setTimeout.
+
+            Advantage of setTimeout being Asynchronous:
+            - it doesn't block our code for 3 seconds
+        */
+
+
+
+
+        /*
+            setInterval()
+            - take two parameters:
+                1. Function to be ran in future
+                2. How long to wait before running this function
+            - it will keep running a function in the future
+        */
+        setInterval(function() {
+            console.log('interval');
+        }, 3000);
+        // setInterval is also Asynchronous
+
+
+
+
+
+
+        // ANOTHER WAY TO LOOP THROUGH AN ARRAY
+        // .forEach() - a method of array
+        [
+            'make dinner',
+            'wash dishes',
+            'watch youtube'
+        ].forEach(function (value, index) {
+            if (value === 'wash dishes') {
+                return; // does the same thing as continue
+            };
+            console.log(index);
+            console.log(value);
+        });
+        // What it does : loop through the array and for each of these values it will save the value in the parameter and run the function.
+
+        // .forEach() is the preferred way to loop through an array because its easier to read.
+
+        // .forEach does not have 'continue' like in for and while loop. Instead we will use return statatement for the same task.
+
+        // .forEach does not have 'break'. It is not an easy way to break in forEach(). If we need to use break then its better to use a regular for loop.
+
+    </script>
+</body>
+</html>
