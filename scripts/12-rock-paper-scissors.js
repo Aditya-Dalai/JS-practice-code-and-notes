@@ -12,10 +12,20 @@ let isAutoPlaying = false;
 //setInterval() returns a number. We can use it to stop the interval.
 let intervalId;
 
-//autoplay added
+
+// const autoPlay = () => {
+
+// };
+/*
+    we could create the arrow function version of autoPlay, but we should stick to the regular one for 2 main reasons:
+    1. Easier to read
+    2. Hoisting
+*/
+
+//autoplay added, arrow function added
 function autoPlay() {
     if (!isAutoPlaying) {
-        intervalId = setInterval(function() {
+        intervalId = setInterval(() => {
             const playerMove = pickComputerMove();
             playGame(playerMove);
         }, 1000);
@@ -25,6 +35,58 @@ function autoPlay() {
         isAutoPlaying = false;
     }  
 }
+
+
+// eventListener added instead of onClick
+document.querySelector('.js-paper-button')
+    .addEventListener('click', () => {
+        playGame('paper');
+    }
+);
+
+document.querySelector('.js-rock-button')
+    .addEventListener('click', () => {
+        playGame('rock');
+    }
+);
+
+document.querySelector('.js-scissors-button')
+    .addEventListener('click', () => {
+        playGame('scissors');
+    }
+);
+
+document.querySelector('.js-reset-button')
+    .addEventListener('click', () => {
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        updateScoreElement();
+        removeResults();
+    }
+);
+
+document.querySelector('.js-autoplay-button')
+    .addEventListener('click', () => {
+        autoPlay();
+    }
+);
+
+
+
+
+// Play the game with keyboard
+// r for Rock, p for Paper and s for Scissors
+document.body.addEventListener('keydown', (event) => { 
+    if (event.key === 'r') {
+        playGame('rock');
+    } else if (event.key === 'p') {
+        playGame('paper');
+    } else if (event.key === 's') {
+        playGame('scissors');
+    }   
+});
 
 function playGame(playerMove) {
     const computerMove = pickComputerMove();

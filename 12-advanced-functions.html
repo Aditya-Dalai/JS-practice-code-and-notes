@@ -172,6 +172,69 @@
 
         // .forEach does not have 'break'. It is not an easy way to break in forEach(). If we need to use break then its better to use a regular for loop.
 
+
+
+
+
+
+        // A shorter way to write functions
+        // ARROW FUNCTIONS
+        const arrowFunction = () => {
+            console.log('hello');
+        };
+        arrowFunction();
+        /*
+            Differences btn arrow and regular functions:
+            Arrow functions have shortcuts that regular functions don't have
+        */
+
+        // when func have only one parameter then round brackets are optional:
+        const oneParam = param => {
+            console.log(param + 1);
+        };
+        oneParam(2);
+
+        // const oneLine = () => {
+        //     return 2 + 3;
+        // };
+        // curly brackets and return statement can be removed when the function has only one line of code
+        const oneLine = () => 2 + 3;
+        console.log(oneLine()); //5
+
+
+
+
+
+
+        //Practice using arrow function
+        [
+            'make dinner',
+            'wash dishes',
+            'watch youtube'
+        ].forEach((value, index) => {
+            if (value === 'wash dishes') {
+                return;
+            };
+            console.log(index);
+            console.log(value);
+        });
+        // Always recommended: Passing a function into another function, => use arrow functions
+
+        //arrow function in objects:
+        const object2 = {
+            // method: () => {
+
+            // },
+            method() {
+                //shorthand method syntax of above arrow function
+            }
+        }
+
+
+
+
+        
+
     </script>
 </body>
 </html>
